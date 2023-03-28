@@ -1,22 +1,11 @@
-function getComputerChoice(){
-  let computerChoice
-  computerChoice = Math.floor(Math.random()* 3)
+function getComputerChoice() {
+  const randomNumber = Math.floor(Math.random() * 3);
 
-
-
-  if(computerChoice === 0){
-    let Rock = computerChoice
-    console.log('Rock')
-  } else if (computerChoice === 1){
-    let Paper = computerChoice
-    console.log('Paper')
-  } else{
-    let Scissors = computerChoice
-    console.log('Scissors')
+  if (randomNumber === 0) {
+    return "rock";
+  } else if (randomNumber === 1) {
+    return "paper";
+  } else {
+    return "scissors";
   }
-  console.log
-  console.log(computerChoice)
-  
 }
-
-getComputerChoice()
