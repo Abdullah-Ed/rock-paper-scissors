@@ -10,28 +10,39 @@ function getComputerChoice() {
   }
 }
 
-function gameRound(playerSelection, computerSelection) {
-  playerSelection = playerSelection.toLowerCase();
+let i = 0;
+let h = 0;
 
-  if (playerSelection === 'rock' && computerSelection === 'paper') {
-    console.log(`You Lose! ${computerSelection} beats ${playerSelection}`);
-  } else if (playerSelection === 'rock' && computerSelection === 'scissors') {
-    console.log(`You Win! ${playerSelection} beats ${computerSelection}`);
-  } else if(playerSelection === 'scissors' && computerSelection === 'rock'){
-    console.log(`You Lose! ${computerSelection} beats ${playerSelection}`);
-  }else if(playerSelection === 'scissors' && computerSelection === 'paper'){
-    console.log(`You Win! ${playerSelection} beats ${computerSelection}`);
-  } else if(playerSelection === 'paper' && computerSelection === 'rock'){
-    console.log(`You Win! ${playerSelection} beats ${computerSelection}`);
-  }else if(playerSelection === 'paper' && computerSelection === 'scissors'){
-    console.log(`You lose! ${computerSelection} beats ${playerSelection}`);
-  }else{
-    console.log('Tie')
+function gameRound(playerSelection, computerSelection) {
+  if (playerSelection === null || playerSelection === undefined) {
+    return "error";
+  }
+
+  playerSelection = playerSelection.toLowerCase();
+  if (playerSelection === "rock" && computerSelection === "paper") {
+    h++;
+    return `You Lose! `;
+  } else if (playerSelection === "rock" && computerSelection === "scissors") {
+    i++;
+    return `You Win! `;
+  } else if (playerSelection === "scissors" && computerSelection === "rock") {
+    h++;
+    return `You Lose! `;
+  } else if (playerSelection === "scissors" && computerSelection === "paper") {
+    i++;
+    return `You Win! `;
+  } else if (playerSelection === "paper" && computerSelection === "rock") {
+    i++;
+    return `You Win! `;
+  } else if (playerSelection === "paper" && computerSelection === "scissors") {
+    h++;
+    return `You lose! `;
+  } else if (playerSelection === computerSelection) {
+    return "Tie";
+  } else {
+    return "Choice does not exist";
   }
 }
 
-let playerSelection = 'rock';
-let computerSelection = getComputerChoice();
 
-console.log(`Computer chose: ${computerSelection}`);
-gameRound(playerSelection, computerSelection);
+
