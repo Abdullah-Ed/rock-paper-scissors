@@ -44,5 +44,9 @@ function gameRound(playerSelection, computerSelection) {
   }
 }
 
+function helper() {
+  console.log(`Wins: ${i}, Losses: ${h}`);
+}
+
 
 
