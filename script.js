@@ -48,5 +48,26 @@ function helper() {
   console.log(`Wins: ${i}, Losses: ${h}`);
 }
 
+function game() {
+  console.log(gameRound(prompt('Rock Paper Scissors'), getComputerChoice()));
+  helper();
+  console.log(gameRound(prompt('Rock Paper Scissors'), getComputerChoice()));
+  helper();
+  console.log(gameRound(prompt('Rock Paper Scissors'), getComputerChoice()));
+  helper();
+  console.log(gameRound(prompt('Rock Paper Scissors'), getComputerChoice()));
+  helper();
+  console.log(gameRound(prompt('Rock Paper Scissors'), getComputerChoice()));
+  helper();
 
+  if (i>h){
+    console.log('You win the game')
+  }else if (i<h){
+    console.log('You lost the game')
+  }else{
+    console.log('no one won! try again')
+  }
+}
+
+game();
 
