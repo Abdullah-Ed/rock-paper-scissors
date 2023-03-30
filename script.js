@@ -10,8 +10,8 @@ function getComputerChoice() {
   }
 }
 
-let i = 0;
-let h = 0;
+let playerScore = 0;
+let computerScore = 0;
 
 function gameRound(playerSelection, computerSelection) {
   if (playerSelection === null || playerSelection === undefined) {
@@ -20,22 +20,22 @@ function gameRound(playerSelection, computerSelection) {
 
   playerSelection = playerSelection.toLowerCase();
   if (playerSelection === "rock" && computerSelection === "paper") {
-    h++;
+    computerScore++;
     return `You Lose! `;
   } else if (playerSelection === "rock" && computerSelection === "scissors") {
-    i++;
+    playerScore++;
     return `You Win! `;
   } else if (playerSelection === "scissors" && computerSelection === "rock") {
-    h++;
+    computerScore++;
     return `You Lose! `;
   } else if (playerSelection === "scissors" && computerSelection === "paper") {
-    i++;
+    playerScore++;
     return `You Win! `;
   } else if (playerSelection === "paper" && computerSelection === "rock") {
-    i++;
+    playerScore++;
     return `You Win! `;
   } else if (playerSelection === "paper" && computerSelection === "scissors") {
-    h++;
+    computerScore++;
     return `You lose! `;
   } else if (playerSelection === computerSelection) {
     return "Tie";
@@ -45,7 +45,7 @@ function gameRound(playerSelection, computerSelection) {
 }
 
 function helper() {
-  console.log(`Wins: ${i}, Losses: ${h}`);
+  console.log(`Wins: ${playerScore}, Losses: ${computerScore}`);
 }
 
 function game() {
@@ -60,9 +60,9 @@ function game() {
   console.log(gameRound(prompt('Rock Paper Scissors'), getComputerChoice()));
   helper();
 
-  if (i>h){
+  if (playerScore>computerScore){
     console.log('You win the game')
-  }else if (i<h){
+  }else if (playerScore<computerScore){
     console.log('You lost the game')
   }else{
     console.log('no one won! try again')
