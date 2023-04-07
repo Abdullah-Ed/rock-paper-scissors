@@ -16,31 +16,29 @@ function getComputerChoice() {
 
 let playerScore = 0;
 let computerScore = 0;
-
+let result
 function gameRound(playerSelection, computerSelection) {
   if (playerSelection === rock && computerSelection === paper) {
     computerScore++;
-    return `You Lose! `;
+    return result =`You Lose! ${computerSelection} beats ${playerSelection}`;
   } else if (playerSelection === rock && computerSelection === scissors) {
     playerScore++;
-    return `You Win! `;
+    return result = `You Win! ${playerSelection}  beats ${computerSelection}`;
   } else if (playerSelection === scissors && computerSelection === rock) {
     computerScore++;
-    return `You Lose! `;
+    return result = `You Lose! ${computerSelection} beats ${playerSelection}`;
   } else if (playerSelection === scissors && computerSelection === paper) {
     playerScore++;
-    return `You Win! `;
+    return result = `You Win! ${playerSelection}  beats ${computerSelection}`;
   } else if (playerSelection === paper && computerSelection === rock) {
     playerScore++;
-    return `You Win! `;
+    return result = `You Win! ${playerSelection}  beats ${computerSelection}`;
   } else if (playerSelection === paper && computerSelection === scissors) {
     computerScore++;
-    return `You lose! `;
+    return result = `You lose! ${computerSelection} beats ${playerSelection}`;
   } else if (playerSelection === computerSelection) {
-    return "Tie";
-  } else {
-    return "Choice does not exist";
-  }
+    return result = "Tie";
+  } 
 }
 
 const rockBtn = document.querySelector('.rock');
@@ -61,10 +59,29 @@ scissorsBtn.addEventListener('click', () => {
   helper();
 });
 
+const currentScore = document.querySelector('.current-score')
+const currentResult = document.querySelector('.result')
+const gameWinner = document.querySelector('.winner')
+
+
 function helper() {
-  console.log(`Wins: ${playerScore}, Losses: ${computerScore}`);
+  currentScore.textContent =`Wins: ${playerScore}, Losses: ${computerScore}`;
+  currentResult.textContent= result
+
+  if(playerScore === 5){
+    gameWinner.textContent = 'you won reload, the page to try again'
+    disableButtons()
+  }else if (computerScore === 5){
+    gameWinner.textContent ='you lost reload, the page to try again'
+    disableButtons()
+  }
 }
 
+function disableButtons() {
+  rockBtn.disabled = true;
+  paperBtn.disabled = true;
+  scissorsBtn.disabled = true;
+}
 
 
 //  function game() {
