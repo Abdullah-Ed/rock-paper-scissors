@@ -42,20 +42,21 @@ function gameRound(playerSelection, computerSelection) {
 }
 
 const rockBtn = document.querySelector('.rock');
-rockBtn.addEventListener('click', () => {
-  gameRound(rock, getComputerChoice());
-  helper();
-});
-
-const paperBtn= document.querySelector('.paper');
-paperBtn.addEventListener('click', () => {
-  gameRound(paper, getComputerChoice());
-  helper();
-});
-
+const paperBtn = document.querySelector('.paper');
 const scissorsBtn = document.querySelector('.scissors');
-scissorsBtn.addEventListener('click', () => {
-  gameRound(scissors, getComputerChoice());
+
+rockBtn.addEventListener('click', function() {
+  gameRound('rock', getComputerChoice());
+  helper();
+});
+
+paperBtn.addEventListener('click', function() {
+  gameRound('paper', getComputerChoice());
+  helper();
+});
+
+scissorsBtn.addEventListener('click', function() {
+  gameRound('scissors', getComputerChoice());
   helper();
 });
 
@@ -69,41 +70,26 @@ function helper() {
   currentResult.textContent= result
 
   if(playerScore === 5){
-    gameWinner.textContent = 'you won reload, the page to try again'
+    gameWinner.textContent = 'You won! Reload the page to try again'
     disableButtons()
   }else if (computerScore === 5){
-    gameWinner.textContent ='you lost reload, the page to try again'
-    disableButtons()
+    gameWinner.textContent ='You lost! Reload the page to try again'
+    disableButtons() 
   }
 }
 
+
+
 function disableButtons() {
-  rockBtn.disabled = true;
-  paperBtn.disabled = true;
-  scissorsBtn.disabled = true;
+  rockBtn.classList.add('disabled');
+  paperBtn.classList.add('disabled');
+  scissorsBtn.classList.add('disabled');
+
+  // disable image buttons
+  const images = document.querySelectorAll('.img');
+  images.forEach(img => {
+    img.style.pointerEvents = 'none';
+  });
 }
 
-
-//  function game() {
-//   console.log(gameRound(prompt('Rock Paper Scissors'), getComputerChoice()));
-//   helper();
-//   console.log(gameRound(prompt('Rock Paper Scissors'), getComputerChoice()));
-//   helper();
-//   console.log(gameRound(prompt('Rock Paper Scissors'), getComputerChoice()));
-//   helper();
-//   console.log(gameRound(prompt('Rock Paper Scissors'), getComputerChoice()));
-//   helper();
-//   console.log(gameRound(prompt('Rock Paper Scissors'), getComputerChoice()));
-//   helper();
-
-//    if (playerScore>computerScore){
-//      console.log('You win the game')
-//    }else if (playerScore<computerScore){
-//      console.log('You lost the game')
-//    }else{
-//      console.log('no one won! try again')
-//    }
-//  }
-
-// game();
 
